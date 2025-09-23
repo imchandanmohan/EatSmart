@@ -192,16 +192,105 @@ EatSmart uses Retrieval-Augmented Generation for:
 ### Project Structure
 ```
 eatsmart/
-├── main.py                 # Entry point
+├── main.py                          # Entry point (already exists)
+├── README.md                        # Project documentation (already exists)
+├── requirements.txt                 # Dependencies (already exists)
+├── pyproject.toml                   # Project configuration (already exists)
+├── LICENSE                          # Apache 2.0 License (already exists)
+├── .python-version                  # Python version (already exists)
+├── .env.example                     # Environment variables template
+├── .gitignore                       # Git ignore patterns
+├── config/
+│   ├── __init__.py
+│   ├── settings.py                  # Application settings
+│   └── logging_config.py            # Logging configuration
 ├── src/
-│   ├── mcp/               # MCP server implementation
-│   ├── api/               # OpenFoodFacts API client
-│   ├── rag/               # RAG and vector database
-│   ├── email/             # Email service
-│   └── utils/             # Utilities and helpers
-├── tests/                 # Test files
-├── docs/                  # Documentation
-└── examples/              # Usage examples
+│   ├── __init__.py
+│   ├── eatsmart/
+│   │   ├── __init__.py
+│   │   ├── mcp/
+│   │   │   ├── __init__.py
+│   │   │   ├── server.py            # MCP server implementation
+│   │   │   ├── tools.py             # MCP tools definition
+│   │   │   ├── resources.py         # MCP resources
+│   │   │   └── prompts.py           # MCP prompts
+│   │   ├── api/
+│   │   │   ├── __init__.py
+│   │   │   ├── openfoodfacts.py     # OpenFoodFacts API client
+│   │   │   ├── models.py            # Data models
+│   │   │   └── cache.py             # API response caching
+│   │   ├── rag/
+│   │   │   ├── __init__.py
+│   │   │   ├── vector_store.py      # Vector database operations
+│   │   │   ├── embeddings.py        # Text embeddings
+│   │   │   ├── retriever.py         # RAG retrieval logic
+│   │   │   └── knowledge_base.py    # Knowledge base management
+│   │   ├── email/
+│   │   │   ├── __init__.py
+│   │   │   ├── service.py           # Email service abstraction
+│   │   │   ├── templates.py         # Email templates
+│   │   │   ├── smtp_client.py       # SMTP implementation
+│   │   │   └── sendgrid_client.py   # SendGrid implementation
+│   │   ├── core/
+│   │   │   ├── __init__.py
+│   │   │   ├── nutrition.py         # Nutrition analysis logic
+│   │   │   ├── scoring.py           # Health scoring algorithms
+│   │   │   ├── recommendations.py   # Product recommendations
+│   │   │   └── shopping_list.py     # Shopping list generation
+│   │   ├── utils/
+│   │   │   ├── __init__.py
+│   │   │   ├── helpers.py           # General utilities
+│   │   │   ├── validators.py        # Data validation
+│   │   │   ├── image_processor.py   # Image processing utilities
+│   │   │   └── formatters.py        # Output formatting
+│   │   └── exceptions.py            # Custom exceptions
+├── tests/
+│   ├── __init__.py
+│   ├── conftest.py                  # Pytest configuration
+│   ├── test_mcp/
+│   │   ├── __init__.py
+│   │   ├── test_server.py
+│   │   ├── test_tools.py
+│   │   └── test_resources.py
+│   ├── test_api/
+│   │   ├── __init__.py
+│   │   ├── test_openfoodfacts.py
+│   │   └── test_models.py
+│   ├── test_rag/
+│   │   ├── __init__.py
+│   │   ├── test_vector_store.py
+│   │   └── test_retriever.py
+│   ├── test_email/
+│   │   ├── __init__.py
+│   │   └── test_service.py
+│   ├── test_core/
+│   │   ├── __init__.py
+│   │   ├── test_nutrition.py
+│   │   └── test_scoring.py
+│   └── fixtures/
+│       ├── sample_products.json
+│       └── test_data.py
+├── docs/
+│   ├── api_reference.md
+│   ├── mcp_integration.md
+│   ├── deployment.md
+│   └── examples.md
+├── examples/
+│   ├── basic_usage.py
+│   ├── mcp_client_example.py
+│   └── batch_analysis.py
+├── scripts/
+│   ├── setup_database.py
+│   ├── populate_knowledge_base.py
+│   └── generate_test_data.py
+├── data/
+│   ├── nutrition_guidelines.json
+│   ├── allergen_info.json
+│   └── dietary_patterns.json
+└── docker/
+    ├── Dockerfile
+    ├── docker-compose.yml
+    └── .dockerignore
 ```
 
 ### Running Tests
